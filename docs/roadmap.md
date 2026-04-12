@@ -25,6 +25,8 @@
 ## Phase 4: CLI Tool
 - `npx log-explainer error.log`
 - Config-driven
+- Turn eslint rules no-console on
+- Add logging library such as `winston`
 
 ## Phase 5: Advanced Features
 - Group similar errors

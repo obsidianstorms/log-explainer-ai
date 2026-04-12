@@ -5,7 +5,12 @@
   "version": "1.0.0",
   "scripts": {
     "test": "vitest",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "lint": "eslint ./src/**/*.js --fix",
+    "format": "prettier --write ./src/**/*.js",
+    "docs": "jsdoc -c jsdoc.json",
+    "precommit-no-test": "npm run lint && npm run format && npm run docs",
+    "precommit": "npm run lint && npm run format && npm run docs && npm run test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +29,13 @@
     "openai": "^6.34.0"
   },
   "devDependencies": {
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^61.7.1",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-sonarjs": "^4.0.2",
+    "jsdoc": "^4.0.5",
+    "prettier": "^3.8.2",
     "vitest": "^3.2.4"
   }
 }
