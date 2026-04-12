@@ -1,0 +1,29 @@
+{
+  "name": "log-explainer-ai",
+  "description": "Analyze and explain log files using AI",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vitest",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obsidianstorms/log-explainer-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obsidianstorms/log-explainer-ai/issues"
+  },
+  "homepage": "https://github.com/obsidianstorms/log-explainer-ai#readme",
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "fetch-to-curl": "^0.6.0",
+    "openai": "^6.34.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
