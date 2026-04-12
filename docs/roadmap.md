@@ -6,6 +6,7 @@
 - Add ESLint with JSDoc and Initial Testing 
 
 ## Phase 1: Basic Explanation
+- CLI Interface
 - Input log file
 - Send to OpenAI
 - Print explanation
@@ -18,11 +19,16 @@
 ## Phase 3: Smarter AI Prompts
 - Context-aware prompts
 - Language/framework detection
+- Semantic similarities (embeddings)
+- LLM-as-a-judge experiments
 
 ## Phase 4: CLI Tool
 - `npx log-explainer error.log`
+- Config-driven
 
 ## Phase 5: Advanced Features
 - Group similar errors
 - Suggest fixes with code snippets
 - CI integration for failed builds
+- Execute evaluations in GitHub actions
+- Regression detection for prompts
