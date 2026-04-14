@@ -20,3 +20,38 @@ node src/index.js
 ## Roadmap
 See docs/roadmap.md
 
+
+## Diagnostic Tools
+
+### CurlRunner
+A debugging + reproducibility tool for interacting with APIs during exploratory or manual testing phases.
+
+Usage:
+```javascript
+import { config } from "dotenv";
+
+import CurlRunner from "../diagnostics/CurlRunner.js";
+
+config();
+
+(async () => {
+  const runner = new CurlRunner();
+  const options = {
+    method: "POST",
+    url: "https://api.openai.com/v1/responses",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    data: {
+      model: "gpt-5-nano",
+      input: "write a haiku about ai",
+      store: true,
+    },
+  };
+
+
+  const { stdout } = await runner.request(options);
+  console.log("Response:\n", stdout);
+})();
+```
