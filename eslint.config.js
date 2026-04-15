@@ -49,8 +49,8 @@ export default defineConfig([
       "block-spacing": ["error", "always"],
       "keyword-spacing": ["error", { before: true, after: true }],
       "space-before-function-paren": ["error", {
-        "anonymous": "ignore",
-        "named": "always",
+        anonymous: "ignore",
+        named: "never",
         "asyncArrow": "always"
       }],
       "space-infix-ops": "error",

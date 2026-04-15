@@ -6,8 +6,8 @@
   "scripts": {
     "test": "vitest",
     "start": "node src/index.js",
-    "lint": "eslint ./src/**/*.js --fix",
-    "format": "prettier --write ./src/**/*.js",
+    "lint": "eslint './src/**/*.js' './diagnostics/**/*.js' --fix",
+    "format": "prettier --write './src/**/*.js' './diagnostics/**/*.js' ",
     "docs": "jsdoc -c jsdoc.json",
     "precommit-no-test": "npm run lint && npm run format && npm run docs",
     "precommit": "npm run lint && npm run format && npm run docs && npm run test"
