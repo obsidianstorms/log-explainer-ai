@@ -1,14 +1,17 @@
+
+import buildLogAnalysisPrompt from "../prompts/buildLogAnalysisPrompt.js";
+
 class OllamaProvider {
   constructor(client) {
     this.client = client;
   }
 
   async generate({ input }) {
+    const prompts = buildLogAnalysisPrompt(input);
+
     const messages = [
-      // { role: "system", content: "Explain logs clearly" },
-      // { role: "user", content: input },
-      { role: "system", content: "You are a helpful senior engineer debugging logs" },
-      { role: "user", content: `"Explain this error log and suggest a fix: ${input}"` },
+      { role: "system", content: prompts.system },
+      { role: "user", content: `"Explain this error log and suggest a fix: ${prompts.user}"` },
     ];
 
     const result = await this.client.chat({ messages });
