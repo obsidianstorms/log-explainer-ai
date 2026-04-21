@@ -1,5 +1,6 @@
 
 import buildLogAnalysisPrompt from "../prompts/buildLogAnalysisPrompt.js";
+import safeParse from "../utils/safeParse.js";
 
 class OllamaProvider {
   constructor(client) {
@@ -18,6 +19,7 @@ class OllamaProvider {
 
     return {
       text: result.text,
+      json: safeParse(result.text),
       model: "ollama",
     };
   }

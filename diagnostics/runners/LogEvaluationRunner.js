@@ -8,6 +8,7 @@ async function evaluate(client, cases) {
     return {
       log: c.log,
       output: result.text,
+      json: result.json,
       expected: c.expected,
     };
   }
