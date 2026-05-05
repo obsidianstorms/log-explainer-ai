@@ -1,0 +1,5 @@
+Error: Cannot read property 'map' of undefined
+    at processData (/app/utils.js:45:12)
+
+
+    “This error occurs because you're trying to call .map() on a variable that is undefined…”

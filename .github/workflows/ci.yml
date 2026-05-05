@@ -1,0 +1,65 @@
+
+Now your repo already looks alive.
+
+---
+
+# 7. Add CI Early (Big Signal)
+
+Create `.github/workflows/ci.yml`:
+
+```yaml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+test:
+ runs-on: ubuntu-latest
+
+ steps:
+   - uses: actions/checkout@v3
+   - name: Set up Python
+     uses: actions/setup-python@v4
+     with:
+       python-version: '3.11'
+
+   - run: pip install -e .
+   - run: pip install pytest
+
+   - run: pytest
+
+
+
+
+
+
+
+  name: CI
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - run: npm install
+      - run: npm run lint
+      - run: npm run format
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - run: npm install
+      - run: npm run docs

@@ -55,6 +55,9 @@ export default defineConfig([
       }],
       "space-infix-ops": "error",
 
+      // Allow multiple lines (eg: Function arguments)
+      "no-unexpected-multiline": "off",
+
       // Complexity rules
       complexity: ["warn", { max: 15 }],
       "max-statements": ["warn", 20],
