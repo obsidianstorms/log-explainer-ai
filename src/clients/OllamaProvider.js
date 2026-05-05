@@ -1,4 +1,3 @@
-
 import buildLogAnalysisPrompt from "../prompts/buildLogAnalysisPrompt.js";
 import safeParse from "../utils/safeParse.js";
 import Log from "../logger/Log.js";
@@ -9,7 +8,7 @@ class OllamaProvider {
     this.logger = new Log("OllamaProvider");
   }
 
-  async generate({ input }) {
+  async _sendPrompt({ input }) {
     const start = Date.now();
     const prompts = buildLogAnalysisPrompt(input);
 
@@ -27,12 +26,34 @@ class OllamaProvider {
       latency: Date.now() - start,
     });
 
-
     return {
       text: result.text,
       json: safeParse(result.text),
       model: "ollama",
     };
+  }
+
+  async generate({ input, retries = 0 } = {}, attempts = 0) {
+    this.logger.log({
+      provider: "ollama",
+      method: "generate",
+      retries,
+      attempts,
+    });
+
+    const response = await this._sendPrompt({ input });
+
+    if (response?.json?.error === "INVALID_JSON" && attempts < retries) {
+      this.logger.log({
+        provider: "ollama",
+        method: "generate",
+        error: response.json.error,
+        message: `Detected Error: ${response.json.errorMessage}`,
+      });
+      return this.generate({ input, retries }, attempts + 1);
+    }
+
+    return response;
   }
 }
 

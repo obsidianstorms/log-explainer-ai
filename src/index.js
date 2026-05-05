@@ -74,11 +74,10 @@ const log = `
 // <<TRUNCATED LINE WITHOUT NEWLINE
 // 2026-05-04T12:00:03.100Z INFO  [recovery] step=1 status=START
 
-
 (async () => {
   const client = ClientFactory();
 
-  const response = await client.generate({ input: log });
-  
+  const response = await client.generate({ input: log, retries: 2 });
+
   console.log("Response:\n", response);
 })();

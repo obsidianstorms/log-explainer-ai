@@ -1,3 +1,17 @@
+import responseSchema from "./promptJsonSchema.js";
+
+function transformSchemaToPrompt(schema = []) {
+  let prompt = "";
+  for (const [
+    index,
+    value,
+  ] of schema.entries()) {
+    prompt += `  ${index + 1}. ${value}`;
+  }
+
+  return prompt;
+}
+
 function buildLogAnalysisPrompt(log) {
   return {
     system: `
@@ -7,9 +21,7 @@ You are a log analysis system.
 - If unsure, say "unknown"
 - Output format: JSON
 - Output section:
-  1. Summary
-  2. Likely Cause
-  3. Suggested Fix
+${transformSchemaToPrompt(responseSchema)}
     `,
     user: log,
   };
