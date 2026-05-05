@@ -37,31 +37,66 @@ export default defineConfig([
           endOfLine: "auto",
         },
       ],
-      indent: ["error", 2],
-      quotes: ["error", "double", { allowTemplateLiterals: true }],
-      semi: ["error", "always"],
+      indent: [
+        "error",
+        2,
+      ],
+      quotes: [
+        "error",
+        "double",
+        { allowTemplateLiterals: true },
+      ],
+      semi: [
+        "error",
+        "always",
+      ],
       "no-trailing-spaces": "error",
-      "eol-last": ["error", "always"],
-      "comma-dangle": ["error", "always-multiline"],
-      "arrow-parens": ["error", "always"],
-      "object-curly-spacing": ["error", "always"],
-      "array-bracket-spacing": ["error", "never"],
-      "block-spacing": ["error", "always"],
-      "keyword-spacing": ["error", { before: true, after: true }],
-      "space-before-function-paren": ["error", {
-        anonymous: "ignore",
-        named: "never",
-        "asyncArrow": "always"
-      }],
+      "eol-last": [
+        "error",
+        "always",
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline",
+      ],
+      "arrow-parens": [
+        "error",
+        "always",
+      ],
+      "block-spacing": [
+        "error",
+        "always",
+      ],
+      "keyword-spacing": [
+        "error",
+        { before: true, after: true },
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          anonymous: "ignore",
+          named: "never",
+          asyncArrow: "always",
+        },
+      ],
       "space-infix-ops": "error",
 
       // Allow multiple lines (eg: Function arguments)
       "no-unexpected-multiline": "off",
 
       // Complexity rules
-      complexity: ["warn", { max: 15 }],
-      "max-statements": ["warn", 20],
-      "sonarjs/cognitive-complexity": ["warn", 15],
+      complexity: [
+        "warn",
+        { max: 15 },
+      ],
+      "max-statements": [
+        "warn",
+        20,
+      ],
+      "sonarjs/cognitive-complexity": [
+        "warn",
+        15,
+      ],
 
       // JSDoc rules
       "jsdoc/check-alignment": "error",
@@ -72,6 +107,17 @@ export default defineConfig([
       "jsdoc/require-returns-type": "error",
       "jsdoc/valid-types": "error",
       "jsdoc/require-description": "error",
+
+      // Stop prettier conflicts
+      // "array-bracket-spacing": ["error", "never"],
+      // "array-element-newline": ["error"],
+      // "object-curly-spacing": [
+      //   "error",
+      //   "always",
+      // ],
+      "array-bracket-spacing": "off",
+      "array-element-newline": "off",
+      "object-curly-spacing": "off",
     },
   },
 ]);

@@ -11,7 +11,10 @@ export function redactSecrets(headers = {}, { showSecrets = false } = {}) {
   const redacted = { ...headers };
 
   if (redacted.Authorization && !showSecrets) {
-    const [scheme, token] = redacted.Authorization.split(" ");
+    const [
+      scheme,
+      token,
+    ] = redacted.Authorization.split(" ");
     if (scheme?.toLowerCase() === "bearer" && token) {
       redacted.Authorization = `${scheme} ${token.slice(0, 4)}...${token.slice(-4)}`;
     }

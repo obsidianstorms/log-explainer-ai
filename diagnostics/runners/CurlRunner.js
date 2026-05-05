@@ -30,10 +30,16 @@ class CurlRunner {
    * @returns {array} The standard curl arguments
    */
   getStandardArgs() {
-    const args = ["--silent", "--show-error"];
+    const args = [
+      "--silent",
+      "--show-error",
+    ];
 
     if (this.failOnHttpFail) {
-      return ["--fail-with-body", ...args];
+      return [
+        "--fail-with-body",
+        ...args,
+      ];
     }
 
     return args;
@@ -46,9 +52,17 @@ class CurlRunner {
    * @returns {array} The arguments for the curl command
    */
   buildArgs({ method = "GET", url, headers = {}, data }) {
-    const args = [...this.getStandardArgs(), "-X", method.toUpperCase(), url];
+    const args = [
+      ...this.getStandardArgs(),
+      "-X",
+      method.toUpperCase(),
+      url,
+    ];
 
-    for (const [key, value] of Object.entries(headers)) {
+    for (const [
+      key,
+      value,
+    ] of Object.entries(headers)) {
       args.push("-H", `${key}: ${value}`);
     }
 
@@ -66,10 +80,19 @@ class CurlRunner {
    * @returns {string} The generated curl command
    */
   toCurlCommand({ method = "GET", url, headers = {}, data }) {
-    const parts = [`curl`, ...this.getStandardArgs(), "-X", method.toUpperCase(), `"${url}"`];
+    const parts = [
+      `curl`,
+      ...this.getStandardArgs(),
+      "-X",
+      method.toUpperCase(),
+      `"${url}"`,
+    ];
 
     const redactedHeaders = redactSecrets(headers, { showSecrets: this.showSecrets });
-    for (const [key, value] of Object.entries(redactedHeaders)) {
+    for (const [
+      key,
+      value,
+    ] of Object.entries(redactedHeaders)) {
       parts.push(`-H "${key}: ${value}"`);
     }
 

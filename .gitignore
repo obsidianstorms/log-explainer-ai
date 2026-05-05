@@ -1,5 +1,6 @@
 _sandbox
 
+*/**/!.*
 node_modules
 .env
 .git

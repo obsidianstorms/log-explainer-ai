@@ -1,4 +1,3 @@
-
 import buildLogAnalysisPrompt from "../prompts/buildLogAnalysisPrompt.js";
 import safeParse from "../utils/safeParse.js";
 import Log from "../logger/Log.js";
